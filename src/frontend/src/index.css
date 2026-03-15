@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=IM+Fell+English:ital@0;1&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark romantic theme */
+    --background: 18 0.02 55;
+    --foreground: 92 0.04 80;
+    --card: 20 0.02 50;
+    --card-foreground: 92 0.04 80;
+    --popover: 20 0.02 50;
+    --popover-foreground: 92 0.04 80;
+    --primary: 72 0.14 75;
+    --primary-foreground: 15 0.02 25;
+    --secondary: 28 0.04 40;
+    --secondary-foreground: 85 0.06 85;
+    --muted: 22 0.02 35;
+    --muted-foreground: 70 0.04 65;
+    --accent: 65 0.12 70;
+    --accent-foreground: 15 0.02 20;
+    --destructive: 55 0.18 28;
+    --destructive-foreground: 95 0.02 95;
+    --border: 30 0.03 32;
+    --input: 25 0.02 28;
+    --ring: 72 0.14 75;
+    --radius: 0.5rem;
+    --chart-1: 72 0.14 75;
+    --chart-2: 65 0.12 70;
+    --chart-3: 55 0.1 65;
+    --chart-4: 45 0.08 60;
+    --chart-5: 35 0.06 55;
+    --sidebar: 18 0.02 40;
+    --sidebar-foreground: 92 0.04 80;
+    --sidebar-primary: 72 0.14 75;
+    --sidebar-primary-foreground: 15 0.02 25;
+    --sidebar-accent: 28 0.04 40;
+    --sidebar-accent-foreground: 85 0.06 85;
+    --sidebar-border: 30 0.03 32;
+    --sidebar-ring: 72 0.14 75;
+
+    /* Custom tokens */
+    --gold: 72 0.14 75;
+    --gold-bright: 78 0.18 80;
+    --cream: 94 0.04 90;
+    --parchment: 84 0.06 80;
+    --ink: 18 0.02 22;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Playfair Display", serif;
+  }
+}
+
+@layer utilities {
+  .font-playfair {
+    font-family: "Playfair Display", serif;
+  }
+  .font-dm-serif {
+    font-family: "DM Serif Display", serif;
+  }
+  .font-fell {
+    font-family: "IM Fell English", serif;
+  }
+
+  /* Grain overlay texture */
+  .grain-overlay {
+    position: relative;
+  }
+  .grain-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    border-radius: inherit;
+  }
+
+  /* Parchment template */
+  .template-parchment {
+    background: oklch(88 0.06 82);
+    color: oklch(28 0.06 48);
+    font-family: "Playfair Display", serif;
+    border: 2px solid oklch(68 0.08 70);
+    box-shadow: inset 0 0 60px oklch(78 0.08 72 / 0.3), 0 8px 40px
+      oklch(10 0.02 20 / 0.4);
+  }
+  .template-parchment::before {
+    background: linear-gradient(
+      135deg,
+      oklch(82 0.07 78 / 0.5) 0%,
+      transparent 50%,
+      oklch(76 0.06 74 / 0.3) 100%
+    );
+  }
+
+  /* Floral template */
+  .template-floral {
+    background: oklch(96 0.03 355);
+    color: oklch(35 0.08 340);
+    font-family: "IM Fell English", serif;
+    border: 1px solid oklch(82 0.08 350);
+    box-shadow: 0 8px 40px oklch(75 0.12 350 / 0.25);
+  }
+
+  /* Midnight template */
+  .template-midnight {
+    background: oklch(18 0.08 278);
+    color: oklch(90 0.1 85);
+    font-family: "Playfair Display", serif;
+    border: 1px solid oklch(55 0.12 85);
+    box-shadow: 0 8px 40px oklch(10 0.05 280 / 0.8), inset 0 1px 0
+      oklch(60 0.1 85 / 0.3);
+  }
+
+  /* Typewriter template */
+  .template-typewriter {
+    background: oklch(94 0.01 90);
+    color: oklch(22 0.02 50);
+    font-family: "Courier New", "Courier", monospace;
+    border: 1px solid oklch(72 0.03 70);
+    box-shadow: 2px 2px 0 oklch(65 0.03 60), 4px 4px 0 oklch(60 0.02 55);
+  }
+
+  /* Minimal Ink template */
+  .template-minimal {
+    background: oklch(99 0.005 60);
+    color: oklch(12 0.02 30);
+    font-family: "DM Serif Display", serif;
+    border-top: 3px solid oklch(12 0.02 30);
+    border-bottom: 1px solid oklch(12 0.02 30);
+    box-shadow: 0 12px 50px oklch(10 0.01 20 / 0.15);
+  }
+
+  .gold-text {
+    color: oklch(var(--gold));
+  }
+  .gold-bright-text {
+    color: oklch(var(--gold-bright));
+  }
+
+  .glow-gold {
+    text-shadow: 0 0 30px oklch(72 0.14 75 / 0.4);
+  }
+}
